@@ -5,21 +5,21 @@ on:
     branches: [main]
 
 jobs:
-  build-andpush:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Get the code
         uses: actions/checkout@v4
-      
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets. DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push image
-        uses: docker/build-pudh-action@v6
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-first-project:latest 
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-first-devops-project:latest
