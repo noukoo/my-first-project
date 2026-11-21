@@ -24,10 +24,10 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-first-devops-project:latest
 
-    deploy:
-      needs: build-and-push
-      runs-on: ubuntu-latest
-      steps:
-        - name: Trigger deployment on Render
-          run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deployment on Render
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
       
